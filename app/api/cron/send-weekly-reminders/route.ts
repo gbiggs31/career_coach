@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
 import { sendWeeklyReminder } from "@/lib/services/reminder-service";
 
-export async function POST(request: Request) {
-  const secret = request.headers.get("x-cron-secret");
-  if (!process.env.CRON_SECRET || secret !== process.env.CRON_SECRET) {
+export async function GET(request: Request) {
+  const secret = request.headers.get("authorization");
+  if (!process.env.CRON_SECRET || secret !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
