@@ -21,8 +21,8 @@ export default async function CheckinDetailPage({ params }: { params: Promise<{ 
       <section className="page-header">
         <div>
           <div className="pill">{formatWeekLabel(detail.checkin.week_start_date, detail.checkin.week_end_date)}</div>
-          <h1>Weekly review</h1>
-          <p>Raw answers, structured extracts, and generated summary stay visible together so trust can be earned.</p>
+          <h1>Aesop&apos;s weekly review</h1>
+          <p>Your words, the extracted signals, and the coaching summary stay side by side so you can trust what is being inferred.</p>
         </div>
         <div className="cta-row">
           <Link href="/" className="button-secondary">
@@ -35,10 +35,12 @@ export default async function CheckinDetailPage({ params }: { params: Promise<{ 
       </section>
 
       <section className="grid">
-        <article className="card">
+        <article className="card feature-card">
           <div className="card-title-row">
-            <h2>Summary</h2>
-            <span className="muted">{detail.checkin.status}</span>
+            <h2>Coaching summary</h2>
+            <span className={`status-badge ${detail.checkin.status === "submitted" ? "status-submitted" : "status-draft"}`}>
+              {detail.checkin.status}
+            </span>
           </div>
           <p>{detail.checkin.summary_text ?? "No summary generated yet."}</p>
           <ul className="bullet-list">
@@ -47,15 +49,16 @@ export default async function CheckinDetailPage({ params }: { params: Promise<{ 
             ))}
           </ul>
           {detail.checkin.next_focus_text ? (
-            <p>
-              <strong>What matters next:</strong> {detail.checkin.next_focus_text}
-            </p>
+            <div className="callout-card">
+              <span className="eyebrow">What matters next</span>
+              <p>{detail.checkin.next_focus_text}</p>
+            </div>
           ) : null}
         </article>
 
         <div className="columns">
           <article className="card">
-            <h2>Raw answers</h2>
+            <h2>Your reflection</h2>
             <div className="stack">
               {WEEKLY_QUESTION_ORDER.map((key) => (
                 <div key={key} className="detail-block">
@@ -67,7 +70,7 @@ export default async function CheckinDetailPage({ params }: { params: Promise<{ 
           </article>
 
           <article className="card">
-            <h2>Structured extraction</h2>
+            <h2>Signals Coach Aesop pulled out</h2>
             {detail.extraction ? (
               <div className="stack">
                 <ExtractionBlock title="Wins" items={detail.extraction.wins_json} />
@@ -80,7 +83,7 @@ export default async function CheckinDetailPage({ params }: { params: Promise<{ 
                 <ExtractionBlock title="Confidence notes" items={detail.extraction.confidence_notes_json} />
               </div>
             ) : (
-              <p className="muted">Structured extraction appears after a submission is processed.</p>
+              <p className="muted">Structured coaching signals appear after a submission has been processed.</p>
             )}
           </article>
         </div>

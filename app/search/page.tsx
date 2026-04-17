@@ -7,9 +7,9 @@ export default async function SearchPage() {
     <main className="app-shell">
       <section className="page-header">
         <div>
-          <div className="pill">Review is a first-class feature</div>
-          <h1>Search & Q&A</h1>
-          <p>Phase 1 starts with keyword and date-range retrieval over normalized documents, with citations to the original weeks.</p>
+          <div className="pill">Ask Aesop</div>
+          <h1>Search your own story</h1>
+          <p>Ask what keeps recurring, where your attention has gone, or what has changed over time. Answers stay tied back to the weeks they came from.</p>
         </div>
       </section>
       <SearchPanel />

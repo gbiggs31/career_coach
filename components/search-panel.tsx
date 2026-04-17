@@ -47,12 +47,12 @@ export function SearchPanel() {
     <section className="grid">
       <form className="card form-grid" onSubmit={handleSearch}>
         <div className="field">
-          <label htmlFor="query">Ask a question or search by keyword</label>
+          <label htmlFor="query">Ask about your patterns, goals, or time</label>
           <input
             id="query"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="What goals do I keep repeating?"
+            placeholder="Where have I been most stuck lately?"
           />
         </div>
         <div className="columns">
@@ -68,7 +68,7 @@ export function SearchPanel() {
         {error ? <p className="danger">{error}</p> : null}
         <div className="inline-actions">
           <button className="button" type="submit" disabled={isPending || query.trim().length === 0}>
-            {isPending ? "Searching..." : "Search history"}
+            {isPending ? "Searching..." : "Ask Aesop"}
           </button>
         </div>
       </form>
@@ -76,11 +76,11 @@ export function SearchPanel() {
       {result ? (
         <article className="card search-results">
           <div>
-            <h2>Answer</h2>
+            <h2>Aesop&apos;s answer</h2>
             <p>{result.answer}</p>
           </div>
           <div>
-            <h3>Citations</h3>
+            <h3>Grounded in these weeks</h3>
             {result.citations.map((citation) => (
               <div key={citation} className="citation">
                 {citation}
@@ -88,7 +88,7 @@ export function SearchPanel() {
             ))}
           </div>
           <div>
-            <h3>Matched chunks</h3>
+            <h3>Matched reflections</h3>
             <ul className="bullet-list">
               {result.matches.map((match) => (
                 <li key={match.id}>

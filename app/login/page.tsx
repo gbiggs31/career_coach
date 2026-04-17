@@ -13,9 +13,9 @@ export default async function LoginPage() {
     <main className="auth-shell">
       <section className="card stack">
         <div>
-          <div className="pill">Local-first auth</div>
-          <h1>Log in</h1>
-          <p className="muted">Use your account to keep weekly history private and available across sessions.</p>
+          <div className="pill">Welcome back</div>
+          <h1>Step back into your weekly practice</h1>
+          <p className="muted">Log in to continue your reflections, revisit older weeks, and keep your coaching history private.</p>
         </div>
         <LoginForm mode="login" />
         <p className="muted">

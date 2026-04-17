@@ -9,6 +9,11 @@ function getResendClient() {
   return apiKey ? new Resend(apiKey) : null;
 }
 
+export type WeeklyReminderResult =
+  | { skipped: true; reason: "already_submitted" }
+  | { skipped: true; reason: "email_not_configured"; preview: { to: string; subject: string; link: string } }
+  | { skipped: false; emailId: string };
+
 export async function sendWeeklyReminder(userId: string) {
   const checkin = await ensureCurrentWeekCheckin(userId);
   if (checkin.status === "submitted") {
@@ -47,12 +52,16 @@ export async function sendWeeklyReminder(userId: string) {
     };
   }
 
-  await resend.emails.send({
+  const response = await resend.emails.send({
     from: getOptionalEnv("EMAIL_FROM") ?? "Career Coach <coach@example.com>",
     to: user.email,
     subject,
     html
   });
 
-  return { skipped: false };
+  if (response.error) {
+    throw new Error(`Resend rejected email: ${response.error.name} - ${response.error.message}`);
+  }
+
+  return { skipped: false, emailId: response.data.id };
 }

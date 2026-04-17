@@ -10,9 +10,9 @@ export default async function GoalsPage() {
     <main className="app-shell">
       <section className="page-header">
         <div>
-          <div className="pill">Rolling state</div>
-          <h1>Goals & Themes</h1>
-          <p>Conservative linking keeps repeated goals and recurring themes visible across weeks without hiding the raw entries behind abstraction.</p>
+          <div className="pill">Progress signals</div>
+          <h1>How your goals are evolving</h1>
+          <p>Repeated ambitions and recurring themes stay visible here so you can tell whether your weeks are lining up with the direction you want.</p>
         </div>
         <div className="cta-row">
           <Link href="/" className="button-secondary">
@@ -31,15 +31,15 @@ export default async function GoalsPage() {
             {goals.map((goal) => (
               <li key={goal.id}>
                 <strong>{goal.canonical_goal_text}</strong>
-                <div className="muted">{goal.status}</div>
+                <div className="muted">Status: {goal.status}</div>
               </li>
             ))}
-            {goals.length === 0 ? <li className="muted">Goals will appear here after the first submitted check-in.</li> : null}
+            {goals.length === 0 ? <li className="muted">Your goals will appear here after the first submitted reflection.</li> : null}
           </ul>
         </article>
 
         <article className="card">
-          <h2>Tracked themes</h2>
+          <h2>Recurring themes</h2>
           <ul className="bullet-list">
             {themes.map((theme) => (
               <li key={theme.id}>
@@ -47,7 +47,7 @@ export default async function GoalsPage() {
                 <div className="muted">{theme.description}</div>
               </li>
             ))}
-            {themes.length === 0 ? <li className="muted">Themes appear after the extraction pipeline runs.</li> : null}
+            {themes.length === 0 ? <li className="muted">Themes will appear after the coaching layer has enough to work with.</li> : null}
           </ul>
         </article>
       </section>
