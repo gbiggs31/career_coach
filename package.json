@@ -1,0 +1,33 @@
+{
+  "name": "career-coach",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "next": "^15.3.0",
+    "openai": "^4.104.0",
+    "pg": "^8.16.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "resend": "^4.3.0",
+    "zod": "^3.25.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.19",
+    "@types/pg": "^8.15.1",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "eslint": "^9.25.0",
+    "eslint-config-next": "^15.3.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}
