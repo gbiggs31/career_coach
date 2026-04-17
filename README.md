@@ -65,8 +65,8 @@ You can also create your own account at `/signup`.
 Call:
 
 ```bash
-POST /api/cron/send-weekly-reminders
-x-cron-secret: <CRON_SECRET>
+GET /api/cron/send-weekly-reminders
+Authorization: Bearer <CRON_SECRET>
 ```
 
 This creates the current-week draft if needed and sends reminders only when the week is still incomplete.

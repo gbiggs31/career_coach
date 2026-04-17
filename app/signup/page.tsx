@@ -13,9 +13,9 @@ export default async function SignupPage() {
     <main className="auth-shell">
       <section className="card stack">
         <div>
-          <div className="pill">Create your workspace</div>
-          <h1>Create account</h1>
-          <p className="muted">This keeps the app directly usable on your machine without needing an external auth provider.</p>
+          <div className="pill">Create your space</div>
+          <h1>Start with Coach Aesop</h1>
+          <p className="muted">Create your private workspace for weekly reflection, progress coaching, and a clearer record of how your career is unfolding.</p>
         </div>
         <LoginForm mode="signup" />
         <p className="muted">

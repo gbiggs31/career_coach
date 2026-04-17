@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth/session";
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-body"
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-display"
+});
+
 export const metadata: Metadata = {
-  title: "Career Coach MVP",
-  description: "Structured weekly reflections with reliable memory and review."
+  title: "Coach Aesop",
+  description: "A calmer weekly coaching ritual for reflecting on your work, progress, and next steps.",
+  icons: {
+    icon: "/icon.svg"
+  }
 };
 
 export default function RootLayout({
@@ -17,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className={`${manrope.variable} ${newsreader.variable}`}>
         <AppFrame userPromise={userPromise}>{children}</AppFrame>
       </body>
     </html>
@@ -37,13 +51,25 @@ async function AppFrame({
     <>
       <header className="topbar">
         <div className="topbar-inner">
-          <Link href="/" className="topbar-brand">
-            Career Coach
-          </Link>
+          <div className="brand-lockup">
+            <Link href="/" className="topbar-brand">
+              Coach Aesop
+            </Link>
+            <span className="brand-subtitle">Weekly career reflection and coaching</span>
+          </div>
           <nav className="topbar-nav">
             {user ? (
               <>
-                <span className="muted">{user.email}</span>
+                <Link href="/checkins/current" className="nav-link">
+                  This week
+                </Link>
+                <Link href="/goals" className="nav-link">
+                  Progress
+                </Link>
+                <Link href="/search" className="nav-link">
+                  Ask Aesop
+                </Link>
+                <span className="user-chip">{user.email}</span>
                 <Link href="/" className="button-secondary">
                   Dashboard
                 </Link>
@@ -55,6 +81,9 @@ async function AppFrame({
               </>
             ) : (
               <>
+                <Link href="/" className="nav-link">
+                  Home
+                </Link>
                 <Link href="/login" className="button-secondary">
                   Log in
                 </Link>

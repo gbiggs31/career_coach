@@ -39,7 +39,7 @@ export function LoginForm({ mode }: { mode: "login" | "signup" }) {
       {mode === "signup" ? (
         <div className="field">
           <label htmlFor="name">Name</label>
-          <input id="name" value={name} onChange={(event) => setName(event.target.value)} />
+          <input id="name" value={name} onChange={(event) => setName(event.target.value)} placeholder="What should Aesop call you?" />
         </div>
       ) : null}
       <div className="field">
@@ -49,6 +49,7 @@ export function LoginForm({ mode }: { mode: "login" | "signup" }) {
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          placeholder="you@example.com"
           required
         />
       </div>
@@ -60,18 +61,19 @@ export function LoginForm({ mode }: { mode: "login" | "signup" }) {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           minLength={8}
+          placeholder="At least 8 characters"
           required
         />
       </div>
       {mode === "signup" ? (
         <div className="field">
           <label htmlFor="timezone">Timezone</label>
-          <input id="timezone" value={timezone} onChange={(event) => setTimezone(event.target.value)} />
+          <input id="timezone" value={timezone} onChange={(event) => setTimezone(event.target.value)} placeholder="Europe/London" />
         </div>
       ) : null}
       {error ? <p className="danger">{error}</p> : null}
       <button className="button" type="submit" disabled={isPending}>
-        {isPending ? "Working..." : mode === "signup" ? "Create account" : "Log in"}
+        {isPending ? "Working..." : mode === "signup" ? "Create my space" : "Log in"}
       </button>
     </form>
   );
