@@ -16,7 +16,10 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   title: "Coach Aesop",
-  description: "A calmer weekly coaching ritual for reflecting on your work, progress, and next steps."
+  description: "A calmer weekly coaching ritual for reflecting on your work, progress, and next steps.",
+  icons: {
+    icon: "/icon.svg"
+  }
 };
 
 export default function RootLayout({
