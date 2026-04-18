@@ -17,16 +17,9 @@ export default async function CurrentCheckinPage() {
     <main className="app-shell">
       <section className="page-header">
         <div>
-          <div className="pill">Estimated time: 5 minutes</div>
-          <h1>This week with Coach Aesop</h1>
-          <p>
-            A gentle end-of-week reset. Capture the work, the friction, and what matters next while it is still fresh, then let the coaching layer
-            help you spot the pattern.
-          </p>
-        </div>
-        <div className="page-side-note">
-          <span className="eyebrow">Suggested flow</span>
-          <p>Start with where your time really went, move through wins and struggles, then finish by choosing what next week needs from you.</p>
+          <div className="pill">~5 minutes</div>
+          <h1>This week&apos;s reflection</h1>
+          <p>Capture what happened while it&apos;s still fresh. Short, honest answers are enough.</p>
         </div>
       </section>
       <CheckinForm checkinId={checkin.id} initialAnswers={answers} />

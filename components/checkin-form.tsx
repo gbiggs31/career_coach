@@ -47,12 +47,11 @@ export function CheckinForm({
     <form className="card form-grid reflection-form" onSubmit={handleSubmit}>
       <div className="form-header">
         <div>
-          <span className="eyebrow">Reflection progress</span>
-          <h2>
-            {completedCount} of {WEEKLY_QUESTION_ORDER.length} prompts answered
+          <h2 style={{ marginBottom: 0 }}>
+            {completedCount} of {WEEKLY_QUESTION_ORDER.length} answered
           </h2>
+          <p className="muted" style={{ margin: "4px 0 0", fontSize: "0.875rem" }}>This is for clarity, not performance.</p>
         </div>
-        <p className="muted">Short, honest answers are enough. This is for clarity, not performance.</p>
       </div>
       {WEEKLY_QUESTION_ORDER.map((key, index) => (
         <div key={key} className="question-card">
