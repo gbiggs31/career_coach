@@ -28,7 +28,7 @@ export default async function DashboardPage() {
           <h1>Welcome back{user.name ? `, ${user.name}` : ""}</h1>
           <p>
             {currentDraft
-              ? `${formatWeekLabel(currentDraft.week_start_date, currentDraft.week_end_date)} · ${
+              ? `${formatWeekLabel(currentDraft.week_start_date, currentDraft.week_end_date)} - ${
                   currentDraft.status === "draft" ? "Your reflection is open" : "Reflection submitted"
                 }`
               : "Start your first weekly reflection"}
@@ -36,7 +36,7 @@ export default async function DashboardPage() {
         </div>
         <div className="cta-row" style={{ marginTop: 0 }}>
           <Link href="/checkins/current" className="button">
-            This week&apos;s reflection
+            This week's reflection
           </Link>
           <Link href="/search" className="button-secondary">
             Ask Aesop
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
             </div>
             <p className={latest?.summary_text ? undefined : "muted"}>
               {latest?.summary_text ??
-                "Start with this week's reflection. Once submitted, Aesop will generate a summary, goals, and themes you can revisit."}
+                "Start with this week's reflection. Once submitted, Aesop will generate a summary you can revisit, along with goals and themes."}
             </p>
             {recentWins.length > 0 ? (
               <ul className="highlight-list">
@@ -122,9 +122,7 @@ export default async function DashboardPage() {
                   </Link>
                 </li>
               ))}
-              {checkins.length === 0 ? (
-                <li className="muted">No reflections yet. Start with this week.</li>
-              ) : null}
+              {checkins.length === 0 ? <li className="muted">No reflections yet. Start with this week.</li> : null}
             </ul>
           </article>
         </div>

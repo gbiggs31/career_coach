@@ -30,6 +30,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body,
+p,
+li,
+span,
+strong,
+h1,
+h2,
+h3,
+a,
+button {
+  overflow-wrap: anywhere;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -65,6 +78,10 @@ select {
   gap: 16px;
 }
 
+.topbar-inner > * {
+  min-width: 0;
+}
+
 .topbar-brand {
   font-family: var(--font-display), Georgia, serif;
   font-size: 1.05rem;
@@ -77,6 +94,8 @@ select {
   display: flex;
   align-items: center;
   gap: 2px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .nav-link {
@@ -132,6 +151,10 @@ select {
   margin-bottom: 32px;
 }
 
+.page-header > * {
+  min-width: 0;
+}
+
 .page-header h1 {
   margin: 0 0 6px;
   font-family: var(--font-display), Georgia, serif;
@@ -156,6 +179,7 @@ select {
   box-shadow: var(--shadow);
   padding: 24px;
   animation: rise-in 280ms ease;
+  min-width: 0;
 }
 
 .card h2,
@@ -172,6 +196,7 @@ select {
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .card-title-row h2,
@@ -229,6 +254,10 @@ select {
   gap: 16px;
 }
 
+.grid > * {
+  min-width: 0;
+}
+
 .stats-strip {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -260,7 +289,8 @@ select {
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
   transition: opacity 150ms, background 150ms;
 }
 
@@ -375,6 +405,7 @@ select {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .highlight-list {
@@ -404,6 +435,7 @@ select {
   border: 1px solid var(--line);
   font-size: 0.82rem;
   color: var(--muted);
+  max-width: 100%;
 }
 
 /* ── Forms ──────────────────────────────────────────────── */
@@ -584,6 +616,11 @@ select {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .topbar-nav {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .question-card {

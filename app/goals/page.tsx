@@ -14,7 +14,7 @@ export default async function GoalsPage() {
       <section className="page-header">
         <div>
           <div className="pill">Progress</div>
-          <h1>Goals &amp; themes</h1>
+          <h1>Goals & themes</h1>
           <p>Repeated ambitions and recurring patterns surfaced across your weekly reflections.</p>
         </div>
         <div className="cta-row" style={{ marginTop: 0 }}>
