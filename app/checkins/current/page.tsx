@@ -18,8 +18,8 @@ export default async function CurrentCheckinPage() {
       <section className="page-header">
         <div>
           <div className="pill">~5 minutes</div>
-          <h1>This week's reflection</h1>
-          <p>Capture what happened while it's still fresh. Short, honest answers are enough.</p>
+          <h1>This week’s reflection</h1>
+          <p>Capture what happened while it’s still fresh. Short, honest answers are enough.</p>
         </div>
       </section>
       <CheckinForm checkinId={checkin.id} initialAnswers={answers} />

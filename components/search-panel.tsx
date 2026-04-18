@@ -76,7 +76,7 @@ export function SearchPanel() {
       {result ? (
         <article className="card search-results">
           <div>
-            <h2>Aesop's answer</h2>
+            <h2>Aesop’s answer</h2>
             <p>{result.answer}</p>
           </div>
           <div>

@@ -36,7 +36,7 @@ export default async function DashboardPage() {
         </div>
         <div className="cta-row" style={{ marginTop: 0 }}>
           <Link href="/checkins/current" className="button">
-            This week's reflection
+            This week’s reflection
           </Link>
           <Link href="/search" className="button-secondary">
             Ask Aesop
