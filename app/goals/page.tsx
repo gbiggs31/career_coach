@@ -6,36 +6,57 @@ export default async function GoalsPage() {
   const user = await requireUser();
   const [goals, themes] = await Promise.all([listGoals(user.id), listThemes(user.id)]);
 
+  const activeGoals = goals.filter((g) => g.status === "active");
+  const otherGoals = goals.filter((g) => g.status !== "active");
+
   return (
     <main className="app-shell">
       <section className="page-header">
         <div>
-          <div className="pill">Progress signals</div>
-          <h1>How your goals are evolving</h1>
-          <p>Repeated ambitions and recurring themes stay visible here so you can tell whether your weeks are lining up with the direction you want.</p>
+          <div className="pill">Progress</div>
+          <h1>Goals &amp; themes</h1>
+          <p>Repeated ambitions and recurring patterns surfaced across your weekly reflections.</p>
         </div>
-        <div className="cta-row">
+        <div className="cta-row" style={{ marginTop: 0 }}>
           <Link href="/" className="button-secondary">
-            Back to dashboard
+            Dashboard
           </Link>
           <Link href="/search" className="button">
-            Search history
+            Ask Aesop
           </Link>
         </div>
       </section>
 
-      <section className="columns">
+      <section className="grid columns">
         <article className="card">
-          <h2>Tracked goals</h2>
+          <h2>Active goals</h2>
           <ul className="bullet-list">
-            {goals.map((goal) => (
+            {activeGoals.map((goal) => (
               <li key={goal.id}>
-                <strong>{goal.canonical_goal_text}</strong>
-                <div className="muted">Status: {goal.status}</div>
+                <strong style={{ fontSize: "0.9rem" }}>{goal.canonical_goal_text}</strong>
               </li>
             ))}
-            {goals.length === 0 ? <li className="muted">Your goals will appear here after the first submitted reflection.</li> : null}
+            {activeGoals.length === 0 ? (
+              <li className="muted" style={{ fontSize: "0.875rem" }}>
+                Goals appear after your first submitted reflection.
+              </li>
+            ) : null}
           </ul>
+          {otherGoals.length > 0 ? (
+            <>
+              <h3 style={{ marginTop: 24, marginBottom: 12, fontSize: "0.85rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                Past goals
+              </h3>
+              <ul className="bullet-list">
+                {otherGoals.map((goal) => (
+                  <li key={goal.id}>
+                    <span style={{ fontSize: "0.9rem" }}>{goal.canonical_goal_text}</span>
+                    <span className="muted" style={{ fontSize: "0.8rem", marginLeft: 8 }}>{goal.status}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </article>
 
         <article className="card">
@@ -43,11 +64,19 @@ export default async function GoalsPage() {
           <ul className="bullet-list">
             {themes.map((theme) => (
               <li key={theme.id}>
-                <strong>{theme.canonical_theme_name}</strong>
-                <div className="muted">{theme.description}</div>
+                <strong style={{ fontSize: "0.9rem" }}>{theme.canonical_theme_name}</strong>
+                {theme.description ? (
+                  <div className="muted" style={{ fontSize: "0.85rem", marginTop: 2 }}>
+                    {theme.description}
+                  </div>
+                ) : null}
               </li>
             ))}
-            {themes.length === 0 ? <li className="muted">Themes will appear after the coaching layer has enough to work with.</li> : null}
+            {themes.length === 0 ? (
+              <li className="muted" style={{ fontSize: "0.875rem" }}>
+                Themes appear once the coaching layer has enough data.
+              </li>
+            ) : null}
           </ul>
         </article>
       </section>

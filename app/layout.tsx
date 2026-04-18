@@ -51,12 +51,9 @@ async function AppFrame({
     <>
       <header className="topbar">
         <div className="topbar-inner">
-          <div className="brand-lockup">
-            <Link href="/" className="topbar-brand">
-              Coach Aesop
-            </Link>
-            <span className="brand-subtitle">Weekly career reflection and coaching</span>
-          </div>
+          <Link href="/" className="topbar-brand">
+            Coach Aesop
+          </Link>
           <nav className="topbar-nav">
             {user ? (
               <>
@@ -69,10 +66,8 @@ async function AppFrame({
                 <Link href="/search" className="nav-link">
                   Ask Aesop
                 </Link>
-                <span className="user-chip">{user.email}</span>
-                <Link href="/" className="button-secondary">
-                  Dashboard
-                </Link>
+                <div className="nav-sep" />
+                <span className="user-chip">{user.name ?? user.email}</span>
                 <form action="/api/auth/logout" method="post">
                   <button className="button-secondary" type="submit">
                     Log out
@@ -81,14 +76,11 @@ async function AppFrame({
               </>
             ) : (
               <>
-                <Link href="/" className="nav-link">
-                  Home
-                </Link>
-                <Link href="/login" className="button-secondary">
+                <Link href="/login" className="nav-link">
                   Log in
                 </Link>
                 <Link href="/signup" className="button">
-                  Create account
+                  Get started
                 </Link>
               </>
             )}
